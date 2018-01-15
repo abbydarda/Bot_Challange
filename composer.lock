@@ -1934,6 +1934,7 @@
                 "uuid"
             ],
             "time": "2018-01-13T22:22:03+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "rmccue/requests",
@@ -1983,6 +1984,8 @@
                 "sockets"
             ],
             "time": "2016-10-13T00:11:37+00:00"
+=======
+>>>>>>> a84df96c4ed3af2ee5ec7bb5a3bf239b54ab34b0
         },
         {
             "name": "swiftmailer/swiftmailer",
