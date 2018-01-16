@@ -17,7 +17,7 @@ class PostController extends Controller
         $posts = Post::all();
         $posts = $posts->map(function($data){
             return [
-                "kategori" => "post",
+                'kategori' => 'post',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
@@ -59,7 +59,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post = [
-                "kategori" => "post",
+                'kategori' => 'post',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
