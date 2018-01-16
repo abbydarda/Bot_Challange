@@ -34,6 +34,4 @@ class PhotoController extends Controller
         ];
         return $photo;
     }
-
-    public function show($albumId)
 }
