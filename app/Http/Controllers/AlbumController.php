@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Album;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class AlbumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $posts = $posts->map(function($data){
+        $albums = Album::all();
+        $albums = $albums->map(function($data){
             return [
-                'kategori' => 'post',
+                'kategori'=> 'album',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
-                'body'=> $data->body,
             ];
         });
 
-        return $posts;
+        return $albums;
     }
 
     /**
@@ -57,16 +56,15 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $post = [
-                'kategori' => 'post',
+        $albums = Album::find($id);
+        $albums = [
+                'kategori'=> 'album',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
-                'body'=> $data->body,
-        ];
-        
-        return $post;
+            ];
+
+        return $albums;
     }
 
     /**
