@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,31 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $users = $users->map(function($data){
+            return [
+                "kategori" => "user",
+                    "id" => $data->id,
+                    "name" => $data->name,
+                    "username" => $data->username,
+                    "email" => $data->email,
+                    "address" =>[
+                        "street" => $data->street,
+                        "suite" => $data->suite,
+                        "city" => $data->city,
+                        "zipcode" => $data->zipcode,
+                            "geo" =>[
+                                "lat" => $data->lat,
+                                "lng" => $data->lng,
+                            ],
+                    ],
+                    "phone" => $data->phone,
+                    "website" => $data->website,
+                    "company" => $data->company,
+                ];
+        });
+
+        return $users;
     }
 
     /**
@@ -45,7 +70,29 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $user = [
+            "kategori" => "user",
+            "id" => $user->id,
+                    "name" => $user->name,
+                    "username" => $user->username,
+                    "email" => $user->email,
+                    "address" =>[
+                        "street" => $user->street,
+                        "suite" => $user->suite,
+                        "city" => $user->city,
+                        "zipcode" => $user->zipcode,
+                            "geo" =>[
+                                "lat" => $user->lat,
+                                "lng" => $user->lng,
+                            ],
+                    ],
+                    "phone" => $user->phone,
+                    "website" => $user->website,
+                    "company" => $user->company,
+                ];
+        
+                return $user;
     }
 
     /**

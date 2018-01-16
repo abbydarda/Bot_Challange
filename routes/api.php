@@ -1,4 +1,4 @@
-<?php
+`<?php
 
 use Illuminate\Http\Request;
 
@@ -18,6 +18,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/test', function(){
         return "Hello";
     });
+
+    Route::resource('/users', 'UserController');
+    Route::resource('/posts', 'PostController');
     
 });
 
