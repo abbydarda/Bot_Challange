@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $posts = $posts->map(function($data){
+        $comments = Comment::all();
+        $comments = $comments->map(function($data){
             return [
-                'kategori' => 'post',
-                'userId'=> $data->userId,
-                'id'=> $data->id,
-                'title'=> $data->title,
-                'body'=> $data->body,
+                "kategori" => "comment",
+                "postId"=> $data->postId,
+                "id"=> $data->id,
+                "userId"=> $data->userId,
+                "body"=> $data->body,
             ];
         });
-
-        return $posts;
+        
+        return $comments;
     }
 
     /**
@@ -57,16 +57,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $post = [
-                'kategori' => 'post',
-                'userId'=> $data->userId,
-                'id'=> $data->id,
-                'title'=> $data->title,
-                'body'=> $data->body,
-        ];
-        
-        return $post;
+        $comment = Comment::find($id);
+        $comment = [
+                "kategori" => "comment",
+                "postId"=> $data->postId,
+                "id"=> $data->id,
+                "userId"=> $data->userId,
+                "body"=> $data->body,
+            ];
+            
+        return $comment;
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Todo;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class TodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,18 +14,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $posts = $posts->map(function($data){
+        $todos = Todo::all();
+        $todos = $todos->map(function($data) {
             return [
-                'kategori' => 'post',
+                'kategori'=> 'todo',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
-                'body'=> $data->body,
+                'completed'=> $data->completed,
             ];
         });
 
-        return $posts;
+        return $todos;
     }
 
     /**
@@ -57,16 +57,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
-        $post = [
-                'kategori' => 'post',
+        $todo = Todo::find($id);
+        $todo = [
+                'kategori'=> 'todo',
                 'userId'=> $data->userId,
                 'id'=> $data->id,
                 'title'=> $data->title,
-                'body'=> $data->body,
-        ];
-        
-        return $post;
+                'completed'=> $data->completed,
+            ];
+
+        return $todo;
     }
 
     /**
