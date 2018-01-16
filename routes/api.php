@@ -18,11 +18,12 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/test', function(){
         return "Hello";
     });
+
+    Route::resource('/users', 'UserController');
+    Route::resource('/posts', 'PostController');
+    Route::resource('/comments', 'CommentController');
     
 });
-
-Route::get('/users', 'UserController@index');
-Route::get('/users/{id}', 'UserController@show');
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
