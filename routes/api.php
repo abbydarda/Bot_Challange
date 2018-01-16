@@ -19,8 +19,8 @@ Route::group(['middleware' => 'auth:api'], function(){
         return "Hello";
     });
 
-    Route::get('/users', 'UserController@index');
-    Route::get('/users/{id}', 'UserController@show');
+    Route::resource('/users', 'UserController');
+    Route::resource('/posts', 'PostController');
     
 });
 

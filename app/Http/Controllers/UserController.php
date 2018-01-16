@@ -37,6 +37,7 @@ class UserController extends Controller
                     "company" => $data->company,
                 ];
         });
+
         return $users;
     }
 
@@ -90,7 +91,8 @@ class UserController extends Controller
                     "website" => $user->website,
                     "company" => $user->company,
                 ];
-        return $user;
+        
+                return $user;
     }
 
     /**
