@@ -27,6 +27,6 @@ class ClientService
     $response = \Requests::get($url,$headers);
     $response = $response->body;
     $response = json_decode($response);
-    return $response->result->fulfillment->speech;
+    return $response->result;
   }
 }

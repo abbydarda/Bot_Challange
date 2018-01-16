@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 use Illuminate\Http\Request;
 
@@ -14,17 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'auth:api'], function(){
-
-    Route::get('/test', function(){
-        return "Hello";
-    });
-
+    Route::get('/main/{command}','Main\MainController@index');
+    Route::resource('/users', 'UserController');
+    Route::resource('/posts', 'PostController');
+    Route::resource('/comments', 'CommentController');
+    Route::resource('/photos', 'PhotoController');
+    Route::resource('/albums', 'AlbumController');
 });
-
-Route::get('/main/{command}','Main\MainController@index');
-Route::get('/users', 'UserController@index');
-Route::get('/users/{id}', 'UserController@show');
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
