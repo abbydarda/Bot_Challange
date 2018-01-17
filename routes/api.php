@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::resource('/main/{command}','MainController');
+    Route::resource('/main/{command}','Main\MainController');
 });
