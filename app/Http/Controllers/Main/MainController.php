@@ -11,15 +11,15 @@ class MainController extends Controller
     public function index(ClientService $client,$command)
     {
       $response = $client->client($command);
-
+      dd($response);
       // set controler dan method
       [$controller, $method] = explode('.',$response->action);
       $param = $response->parameters;
       foreach ($param as $key => $value) {
         $param = [
-          "param"=>$response->parameters->$key,
+          $key=>$response->parameters->$key,
         ];
-        $param = $param['param'];
+        $param = $param[$key];
       }
       $controller = $this->setController($controller);
       $response = $controller->$method($param);
