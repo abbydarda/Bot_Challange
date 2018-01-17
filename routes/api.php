@@ -20,4 +20,5 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::resource('/comments', 'CommentController');
     Route::resource('/photos', 'PhotoController');
     Route::resource('/albums', 'AlbumController');
+    Route::resource('/todos', 'TodoController');
 });
