@@ -57,6 +57,8 @@ class TodoController extends Controller
      */
     public function show($id)
     {
+        $key = array_keys($id);
+        $id = $id [$key[0]];
         $todo = Todo::find($id);
         $todo = [
                 'kategori'=> 'todo',

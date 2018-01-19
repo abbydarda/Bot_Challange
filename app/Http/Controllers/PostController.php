@@ -57,6 +57,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $key = array_keys($id);
+        $id = $id [$key[0]];
         $post = Post::find($id);
         $post = [
                 'kategori' => 'post',
@@ -65,7 +67,7 @@ class PostController extends Controller
                 'title'=> $data->title,
                 'body'=> $data->body,
         ];
-        
+
         return $post;
     }
 

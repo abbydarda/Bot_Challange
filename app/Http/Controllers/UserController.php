@@ -70,7 +70,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        
+        $key = array_keys($id);
+        $id = $id [$key[0]];
         $user = User::find($id);
         $user = [
             "kategori" => "user",

@@ -24,7 +24,7 @@ class CommentController extends Controller
                 "body"=> $data->body,
             ];
         });
-        
+
         return $comments;
     }
 
@@ -57,6 +57,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
+        $key = array_keys($id);
+        $id = $id [$key[0]];
         $comment = Comment::find($id);
         $comment = [
                 "kategori" => "comment",
@@ -65,7 +67,7 @@ class CommentController extends Controller
                 "userId"=> $data->userId,
                 "body"=> $data->body,
             ];
-            
+
         return $comment;
     }
 

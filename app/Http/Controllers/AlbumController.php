@@ -56,6 +56,8 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
+      $key = array_keys($id);
+      $id = $id [$key[0]];
         $albums = Album::find($id);
         $albums = [
                 'kategori'=> 'album',

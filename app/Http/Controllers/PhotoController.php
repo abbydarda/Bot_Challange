@@ -23,6 +23,8 @@ class PhotoController extends Controller
     }
 
     public function show($id){
+        $key = array_keys($id);
+        $id = $id [$key[0]];
         $photo = Photo::find($id);
         $photo = [
             "kategori" => "photo",
