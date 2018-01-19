@@ -70,6 +70,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        
         $user = User::find($id);
         $user = [
             "kategori" => "user",
@@ -91,7 +92,7 @@ class UserController extends Controller
                     "website" => $user->website,
                     "company" => $user->company,
                 ];
-        
+
                 return $user;
     }
 
