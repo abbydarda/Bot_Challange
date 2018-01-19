@@ -11,14 +11,29 @@ class MainController extends Controller
     public function index(ClientService $client,$command=null)
     {
       if (!$command) {
-        return "hello, what can i do for you?";
+        return [
+          'kategori'=>'salam',
+          'data'=>[
+            'body'=>'Hello!, What can I do for you?'
+          ]
+        ];
       }else {
         $response = $client->client($command);
         $x = preg_match_all('/\./',$response->action);
         if ($response->action=="input.unknown") {
-          return "Maaf kata yang dimasukan salah";
+          return [
+            'kategori'=>'error',
+            'data'=>[
+              'body'=>'Sorry, Your keyword is wrong'
+            ]
+          ];
         }elseif ($x==2) {
-          return $response->fulfillment->speech;
+          return [
+            'kategori'=>'salam',
+            'data'=>[
+              'body'=>$response->fulfillment->speech
+            ]
+          ];
         }elseif ($x==1) {
           // set controler dan method
           [$controller, $method] = explode('.',$response->action);
@@ -27,7 +42,12 @@ class MainController extends Controller
           $a = [];
 
           if ($response->actionIncomplete==true) {
-            return $response->fulfillment->speech;
+            return [
+              'kategori'=>'pertanyaan',
+              'data'=>[
+                'body'=>$response->fulfillment->speech
+              ]
+            ];
           }
 
           foreach ($param as $key => $value) {
@@ -39,7 +59,12 @@ class MainController extends Controller
 
           // set controller dan method
         }
-        return "Maaf kata yang dimasukan salah";
+        return [
+          'kategori'=>'error',
+          'data'=>[
+            'body'=>'Sorry, Your keyword is wrong'
+          ]
+        ];
       }
 
     }
